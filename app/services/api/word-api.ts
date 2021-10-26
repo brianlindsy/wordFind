@@ -1,23 +1,21 @@
 import { ApiResponse } from "apisauce"
 import { Api } from "./api"
-import { GetCharactersResult } from "./api.types"
+import { GetWordsResult } from "./api.types"
 import { getGeneralApiProblem } from "./api-problem"
 
-const API_PAGE_SIZE = 50
-
-export class CharacterApi {
+export class WordsApi {
   private api: Api
 
   constructor(api: Api) {
     this.api = api
   }
 
-  async getCharacters(): Promise<GetCharactersResult> {
+  async getWords(letters): Promise<GetWordsResult> {
     try {
       // make the api call
       const response: ApiResponse<any> = await this.api.apisauce.get(
-        "https://raw.githubusercontent.com/infinitered/ignite/master/data/rick-and-morty.json",
-        { amount: API_PAGE_SIZE },
+        "http://wordfindjava-env-1.eba-vteiqxva.us-east-1.elasticbeanstalk.com/findWords",
+        {letters: letters}
       )
 
       // the typical ways to die when calling an api
@@ -26,9 +24,9 @@ export class CharacterApi {
         if (problem) return problem
       }
 
-      const characters = response.data.results
+      const words = response.data
 
-      return { kind: "ok", characters }
+      return words 
     } catch (e) {
       __DEV__ && console.tron.log(e.message)
       return { kind: "bad-data" }
