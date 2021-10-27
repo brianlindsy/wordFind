@@ -16,8 +16,20 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "permissions": [],
+      "versionCode": 1,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-8812453476407098~8648612879"
+      },
+      "package": "com.blindsey.WordFind"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-8812453476407098~8648612879"
+      },
+      "bundleIdentifier": "com.blindsey.WordFind"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

@@ -137,10 +137,12 @@ export const CharacterInput: React.FunctionComponent<ICharacterInput> = (props: 
   }
 
   const clear = () => {
-    for (let i = 0; i < inputLength; i++) {
+    for (let i = 0; i < singleInputRef.length; i++) {
       singleInputRef[i].clear()
       singleInputRef[0].focus()
     }
+    props.handleChange('');
+    setValue(Array(inputLength).fill(''))
   }
 
   return (
