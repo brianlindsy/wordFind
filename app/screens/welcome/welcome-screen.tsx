@@ -143,8 +143,6 @@ export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> 
     const updateFoundWords = async () => {
       const result = await wordStore.getWords(word.toLowerCase().substring(0, numberOfCharacters))
 
-      console.log(result)
-
       setFoundWords(result)
     }
     const renderFoundWordList = () => {
@@ -184,7 +182,6 @@ export const WelcomeScreen: FC<StackScreenProps<NavigatorParamList, "welcome">> 
               <Text style={TITLE} text="Your Letters" />
             </Text>
             <CharacterInput
-              word={word}
               autoFocus={true}
               placeHolder={" ".repeat(numberOfCharacters)}
               showCharBinary={"1".repeat(numberOfCharacters)}
